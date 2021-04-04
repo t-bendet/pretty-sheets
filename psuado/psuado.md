@@ -5,6 +5,10 @@
 - [ ] clients Tracking
 - [ ] Goal setting and tracking
 
+## main challenges
+
+- [ ] registring a client and enable login
+
 ## components
 
 ### Landing page
