@@ -1,6 +1,7 @@
 # Core Features
 
-- [ ] Google sheets as data storage
+- [ ] login with OAuth 2.0
+- [ ] Mock api as data storage
 - [ ] Crud App
 - [ ] clients Tracking
 - [ ] Goal setting and tracking
@@ -13,9 +14,17 @@
 
 ## components
 
+### React router
+
+- [x] router
+
+### NavBar (basic)
+
+- [ ] log in/out button
+- [ ] more..
+
 ### Landing page
 
-- [ ] NavBar (basic)
 - [ ] Hero Image
 - [ ] Short explantion (ipso lorem for now)
 - [ ] Register button(link to register)
@@ -57,3 +66,4 @@
 - [ ] login tracker
 - [ ] customer survey vis sms/email
 - [ ] local storage
+- [ ] export data to google sheets
