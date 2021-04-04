@@ -7,14 +7,47 @@
 
 ## components
 
-## Pages
+### Landing page
 
-- [ ] Landing page
-- [ ] Register Form
-- [ ] Prograss Page
-- [ ] Tracking past meetings
-- [ ] Daily Report
+- [ ] NavBar (basic)
+- [ ] Hero Image
+- [ ] Short explantion (ipso lorem for now)
+- [ ] Register button(link to register)
 
-## ideas
+### Register Form
+
+- [ ] basic form info(name,email,company for now)
+- [ ] basic goals and data (money per month for now)
+- [ ] Q: login to google (OAuth 2.0 client id/sheet id/create specific sheet per user on my account?..../....)
+- [ ] save form data to google sheets
+- [ ] once submitted redirect to progress bar
+
+### Prograss Page
+
+- [ ] display year plan for actions
+- [ ] editable goals
+- [ ] plan vs execution
+
+### Tracking past meetings
+
+- [ ] list of cilents and meetings
+- [ ] filter lists by params(data,name for now)
+
+### Daily Report
+
+- [ ] form with fixed params(num of calls,num of meetings and so)
+
+## design ideas
 
 - [ ] accordion display with semantic ui
+
+## Extra
+
+- [ ] TODO list
+- [ ] charts in progress bar
+- [ ] mail/sms after each meeting
+- [ ] mailing list
+- [ ] daily motivation
+- [ ] login tracker
+- [ ] customer survey vis sms/email
+- [ ] local storage
