@@ -8,6 +8,8 @@
 ## main challenges
 
 - [ ] registring a client and enable login
+- [ ] using mail chimp per user
+- [ ] Time shortage(use only semantic ui for design,minimal css,redux forms?...)
 
 ## components
 
