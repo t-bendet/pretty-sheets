@@ -1,12 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import GoogleAuth from "./components/GoogleAuth";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import LandingPage from "./components/LandingPage";
-
+import Register from "./components/Register";
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(null);
-  const [auth, setAuth] = useState(undefined);
+  const [auth, setAuth] = useState(null);
+  const [userId, setUserId] = useState(null);
   useEffect(() => {
     window.gapi.load("client:auth2", () => {
       window.gapi.client
@@ -23,14 +29,13 @@ const App = () => {
   useEffect(() => {
     if (auth) {
       setIsSignedIn(auth.isSignedIn.get());
+      setUserId(auth.currentUser.get().getId());
       auth.isSignedIn.listen(onAuthChange);
     }
   }, [auth]);
+  // reduce functions
   const onAuthChange = () => {
-    console.log("o.k");
     setIsSignedIn(auth.isSignedIn.get());
-    //user id
-    console.log(auth.currentUser.get().getId());
   };
   // sign in and out
   const onSignInClick = () => {
@@ -44,28 +49,31 @@ const App = () => {
       return null;
     } else if (isSignedIn) {
       return (
-        <button onClick={onSignOutClick} className="ui red google button">
+        <button onClick={onSignOutClick} className="ui red google button right">
           <i className="google icon"></i>
           Sign Out
         </button>
       );
     } else {
       return (
-        <button onClick={onSignInClick} className="ui red google button">
+        <button onClick={onSignInClick} className="ui red google button right">
           <i className="google icon"></i>
           Sign In With Google
         </button>
       );
     }
   };
+  //************************Sign in***********************************/
   return (
     <BrowserRouter>
       <div className="ui container">
-        {renderAuthButton()}
-        <Navbar />
+        <Navbar userStatus={isSignedIn} renderAuthButton={renderAuthButton} />
         <Switch>
           <Route exact path="/">
-            <LandingPage />
+            <LandingPage userStatus={isSignedIn} />
+          </Route>
+          <Route exact path="/register">
+            <Register />
           </Route>
         </Switch>
       </div>
