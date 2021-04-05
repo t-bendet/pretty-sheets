@@ -9,10 +9,13 @@ import {
 import Navbar from "./components/Navbar";
 import LandingPage from "./components/LandingPage";
 import Register from "./components/Register";
+import MockApi from "./apis/MockApi";
+
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(null);
   const [auth, setAuth] = useState(null);
   const [userId, setUserId] = useState(null);
+  const [isRegisterd, setIsRegisterd] = useState(null);
   useEffect(() => {
     window.gapi.load("client:auth2", () => {
       window.gapi.client
@@ -49,17 +52,31 @@ const App = () => {
       return null;
     } else if (isSignedIn) {
       return (
-        <button onClick={onSignOutClick} className="ui red google button right">
-          <i className="google icon"></i>
-          Sign Out
-        </button>
+        <div
+          onClick={onSignOutClick}
+          class="ui animated fade button red google"
+          tabindex="0"
+        >
+          <div class="visible content">
+            <i className="google icon"></i>
+            Sign Out
+          </div>
+          <div class="hidden content">so soon?</div>
+        </div>
       );
     } else {
       return (
-        <button onClick={onSignInClick} className="ui red google button right">
-          <i className="google icon"></i>
-          Sign In With Google
-        </button>
+        <div
+          onClick={onSignInClick}
+          class="ui animated fade button red google"
+          tabindex="0"
+        >
+          <div class="visible content">
+            <i className="google icon"></i>
+            Sign In With Google
+          </div>
+          <div class="hidden content">Join Us</div>
+        </div>
       );
     }
   };
@@ -67,10 +84,18 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="ui container">
-        <Navbar userStatus={isSignedIn} renderAuthButton={renderAuthButton} />
+        <Navbar
+          userStatus={isSignedIn}
+          clientStatus={isRegisterd}
+          renderAuthButton={renderAuthButton}
+        />
         <Switch>
           <Route exact path="/">
-            <LandingPage userStatus={isSignedIn} />
+            <LandingPage
+              renderAuthButton={renderAuthButton}
+              userStatus={isSignedIn}
+              clientStatus={isRegisterd}
+            />
           </Route>
           <Route exact path="/register">
             <Register />

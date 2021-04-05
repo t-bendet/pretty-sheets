@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ renderAuthButton, userStatus }) => {
+const Navbar = ({ renderAuthButton, userStatus, clientStatus }) => {
   const renderNav = () => {
-    if (userStatus) {
+    if (userStatus && clientStatus) {
+      //TODO change to active links
       return (
         <React.Fragment>
           <div className="item">
@@ -17,16 +18,55 @@ const Navbar = ({ renderAuthButton, userStatus }) => {
           </div>
         </React.Fragment>
       );
-    } else {
+    } else if (userStatus) {
       return (
-        <div className="item right">
-          <Link to="/register" class="ui button ">
-            Register
-          </Link>
-        </div>
+        <React.Fragment>
+          <div className="item">
+            <div
+              className="ui"
+              data-inverted=""
+              data-tooltip="Register Now! to log and track your prograss"
+              data-position="bottom right"
+            >
+              Prograss
+            </div>
+          </div>
+          <div className="item">
+            <div
+              className="ui"
+              data-inverted=""
+              data-tooltip="Register Now! to keep track of that busy schedule"
+              data-position="bottom center"
+            >
+              Track Your Meetings
+            </div>
+          </div>
+          <div className="item">
+            <div
+              className="ui"
+              data-inverted=""
+              data-tooltip="Register Now! and add your daily achievement"
+              data-position="bottom left"
+            >
+              Daily Report
+            </div>
+          </div>
+          <div className="item">
+            <Link
+              to="/register"
+              className="ui"
+              data-inverted=""
+              data-tooltip="Let's Gooo!"
+              data-position="bottom left"
+            >
+              Register
+            </Link>
+          </div>
+        </React.Fragment>
       );
     }
   };
+
   return (
     <div className="ui menu">
       <Link className="item" to="/">
@@ -39,4 +79,3 @@ const Navbar = ({ renderAuthButton, userStatus }) => {
 };
 
 export default Navbar;
-//TODO add Links
