@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = ({ renderAuthButton, userStatus, clientStatus }) => {
   const renderNav = () => {
     if (userStatus && clientStatus) {
-      //TODO change to active links
+      //TODO change to active links with conditional rendering by client....
       return (
         <React.Fragment>
           <div className="item">
@@ -45,7 +45,7 @@ const Navbar = ({ renderAuthButton, userStatus, clientStatus }) => {
             <div
               className="ui"
               data-inverted=""
-              data-tooltip="Register Now! and add your daily achievement"
+              data-tooltip="Register Now! and add your daily achievements"
               data-position="bottom left"
             >
               Daily Report
@@ -66,7 +66,6 @@ const Navbar = ({ renderAuthButton, userStatus, clientStatus }) => {
       );
     }
   };
-
   return (
     <div className="ui menu">
       <Link className="item" to="/">

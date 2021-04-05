@@ -5,6 +5,7 @@ import {
   Route,
   Link,
   useRouteMatch,
+  Redirect,
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import LandingPage from "./components/LandingPage";
@@ -91,11 +92,7 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
-            <LandingPage
-              renderAuthButton={renderAuthButton}
-              userStatus={isSignedIn}
-              clientStatus={isRegisterd}
-            />
+            {isSignedIn ? <Redirect to="/register" /> : <LandingPage />}
           </Route>
           <Route exact path="/register">
             <Register />
