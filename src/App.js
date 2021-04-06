@@ -11,6 +11,8 @@ import Navbar from "./components/Navbar";
 import LandingPage from "./components/LandingPage";
 import Clients from "./components/Clients";
 import Register from "./components/Register";
+import ClientCard from "./components/ClientCard";
+
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(null);
   const [auth, setAuth] = useState(null);
@@ -37,10 +39,13 @@ const App = () => {
     }
   }, [auth]);
   useEffect(() => {}, [clientData]);
-  // reduce functions
   const onAuthChange = () => {
     setIsSignedIn(auth.isSignedIn.get());
+    if (clientData) {
+      console.log(clientData);
+    }
   };
+
   // sign in and out
   const onSignInClick = () => {
     auth.signIn();
@@ -92,7 +97,8 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
-            {isSignedIn ? <Redirect to={`/clients`} /> : <LandingPage />}
+            //TODO fix need to refresh after sign in
+            {clientData ? <Redirect to={`/clients`} /> : <LandingPage />}
           </Route>
           <Route
             exact
@@ -106,7 +112,15 @@ const App = () => {
           />
           <Route
             path="/register"
-            component={() => <Register data={clientData} />}
+            component={() => (
+              <Register data={clientData} setIsRegisterd={setIsRegisterd} />
+            )}
+          />
+          <Route
+            path="/clients/:id"
+            component={() => (
+              <ClientCard data={clientData} isRegisterd={isRegisterd} />
+            )}
           />
         </Switch>
       </div>

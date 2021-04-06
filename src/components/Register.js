@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Field, Form } from "formik";
+import MockApi from "../apis/MockApi";
 
-const Register = ({ data }) => {
+const Register = ({ data, setIsRegisterd }) => {
   const [formData, setFormData] = useState(null);
-  console.log(formData);
+  const completeRegister = async () => {
+    const registrationData = {
+      ...formData,
+      googleId: data.RR,
+      registerDate: new Date(),
+    };
+    await MockApi.post("/clients", { ...registrationData });
+    setIsRegisterd(true);
+    // TODO return to previous page(history?....)
+  };
+  useEffect(() => {
+    if (formData) {
+      completeRegister();
+    } else {
+      console.log("no form data");
+    }
+  }, [formData]);
   return (
     <div>
       <div className="ui medium circular image">
@@ -19,7 +36,6 @@ const Register = ({ data }) => {
         }}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
           setFormData(values);
         }}
       >
@@ -65,3 +81,5 @@ const Register = ({ data }) => {
 };
 
 export default Register;
+
+//ToDO add Form Validation ... yup?

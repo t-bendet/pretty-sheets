@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Redirect, Link } from "react-router-dom";
 import MockApi from "../apis/MockApi";
-import Register from "./Register";
 
 const Clients = ({ clientData, setIsRegisterd }) => {
   const [clientsList, setClientsList] = useState([]);
-  const [registerStatus, setRegisterStatus] = useState(setIsRegisterd());
+  const [redirect, setRedirect] = useState(null);
   //TODO return to landing if signed out
-  useEffect(() => {
-    setIsRegisterd(registerStatus);
-  }, [registerStatus]);
   useEffect(() => {
     const getClients = async () => {
       const results = await MockApi.get("/clients");
@@ -17,33 +13,19 @@ const Clients = ({ clientData, setIsRegisterd }) => {
     };
     getClients();
   }, []);
-  const checkIsRegisterd = () => {
-    const status = [...clientsList].find((el) => {
-      return el.googleId === clientData.RR;
-    });
-    setRegisterStatus(status);
-  };
-  const renderClient = () => {
-    if (registerStatus) {
-      return (
-        <div>
-          <h1>this will redirect to the registerd client</h1>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <h1>this will propmt to register</h1>
-          <div className="item">
-            <Link to={`/register`} className="ui">
-              <h1>Register</h1>
-            </Link>
-          </div>
-        </div>
-      );
+  useEffect(() => {
+    if (clientsList.length) {
+      const status = [...clientsList].find((el) => {
+        return el.googleId == clientData.RR;
+      });
+      if (status) {
+        setIsRegisterd(true);
+      }
+      setRedirect(<Redirect to={`clients/${clientData.RR}`} />);
     }
-  };
-  return <div>{renderClient()}</div>;
+  }, [clientsList]);
+
+  return <div>{<h1>Loading</h1> && redirect}</div>;
 };
 
 export default Clients;
