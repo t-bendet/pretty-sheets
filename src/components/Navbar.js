@@ -51,26 +51,13 @@ const Navbar = ({ renderAuthButton, userStatus, clientStatus }) => {
               Daily Report
             </div>
           </div>
-          <div className="item">
-            <Link
-              to="/register"
-              className="ui"
-              data-inverted=""
-              data-tooltip="Let's Gooo!"
-              data-position="bottom left"
-            >
-              Register
-            </Link>
-          </div>
         </React.Fragment>
       );
     }
   };
   return (
     <div className="ui menu">
-      <Link className="item" to="/">
-        LandingPage
-      </Link>
+      <div className="item">Preety sheets &trade;</div>
       {renderNav()}
       <div className="item right">{renderAuthButton()}</div>
     </div>

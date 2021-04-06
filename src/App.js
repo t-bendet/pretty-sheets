@@ -9,13 +9,12 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import LandingPage from "./components/LandingPage";
+import Clients from "./components/Clients";
 import Register from "./components/Register";
-import MockApi from "./apis/MockApi";
-
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(null);
   const [auth, setAuth] = useState(null);
-  const [userId, setUserId] = useState(null);
+  const [clientData, setClientData] = useState(null);
   const [isRegisterd, setIsRegisterd] = useState(null);
   useEffect(() => {
     window.gapi.load("client:auth2", () => {
@@ -33,10 +32,11 @@ const App = () => {
   useEffect(() => {
     if (auth) {
       setIsSignedIn(auth.isSignedIn.get());
-      setUserId(auth.currentUser.get().getId());
+      setClientData(auth.currentUser.get().getBasicProfile());
       auth.isSignedIn.listen(onAuthChange);
     }
   }, [auth]);
+  useEffect(() => {}, [clientData]);
   // reduce functions
   const onAuthChange = () => {
     setIsSignedIn(auth.isSignedIn.get());
@@ -55,28 +55,28 @@ const App = () => {
       return (
         <div
           onClick={onSignOutClick}
-          class="ui animated fade button red google"
-          tabindex="0"
+          className="ui animated fade button red google"
+          tabIndex="0"
         >
-          <div class="visible content">
+          <div className="visible content">
             <i className="google icon"></i>
             Sign Out
           </div>
-          <div class="hidden content">so soon?</div>
+          <div className="hidden content">so soon?</div>
         </div>
       );
     } else {
       return (
         <div
           onClick={onSignInClick}
-          class="ui animated fade button red google"
-          tabindex="0"
+          className="ui animated fade button red google"
+          tabIndex="0"
         >
-          <div class="visible content">
+          <div className="visible content">
             <i className="google icon"></i>
             Sign In With Google
           </div>
-          <div class="hidden content">Join Us</div>
+          <div className="hidden content">Join Us</div>
         </div>
       );
     }
@@ -92,11 +92,22 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
-            {isSignedIn ? <Redirect to="/register" /> : <LandingPage />}
+            {isSignedIn ? <Redirect to={`/clients`} /> : <LandingPage />}
           </Route>
-          <Route exact path="/register">
-            <Register />
-          </Route>
+          <Route
+            exact
+            path="/clients"
+            component={() => (
+              <Clients
+                clientData={clientData}
+                setIsRegisterd={setIsRegisterd}
+              />
+            )}
+          />
+          <Route
+            path="/register"
+            component={() => <Register data={clientData} />}
+          />
         </Switch>
       </div>
     </BrowserRouter>
@@ -104,3 +115,4 @@ const App = () => {
 };
 
 export default App;
+//

@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
-const Register = () => {
+const Register = ({ data }) => {
+  console.log(data);
+
   return (
     <div>
       <h1>Register</h1>
-      <form>
-        <label></label>
-      </form>
     </div>
   );
 };

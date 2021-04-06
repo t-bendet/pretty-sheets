@@ -1,7 +1,7 @@
 # Core Features
 
-- [ ] login with OAuth 2.0
-- [ ] Mock api as data storage
+- [x] login with OAuth 2.0
+- [x] Mock api as data storage
 - [ ] Crud App
 - [ ] clients Tracking
 - [ ] Goal setting and tracking
@@ -20,14 +20,14 @@
 
 ### NavBar (basic)
 
-- [ ] log in/out button
-- [ ] more..
+- [x] log in/out button
+- [x] more..
 
 ### Landing page
 
-- [ ] Hero Image
+- [x] Hero Image
 - [ ] Short explantion (ipso lorem for now)
-- [ ] Register button(link to register)
+- [x] Register button(link to register)
 
 ### Register Form
 
