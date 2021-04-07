@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Formik, Field, Form } from "formik";
 import MockApi from "../apis/MockApi";
+import YearlyPlan from "../functions/yearlyPlan";
 
 const Register = ({ data, setIsRegisterd }) => {
   const [formData, setFormData] = useState(null);
+  const history = useHistory();
   const completeRegister = async () => {
     const registrationData = {
       ...formData,
       googleId: data.RR,
       registerDate: new Date(),
+      dailyReport: [],
     };
-    await MockApi.post("/clients", { ...registrationData });
+    const yearlyPlanData = YearlyPlan(registrationData);
+    await MockApi.post("/clients", { ...registrationData, ...yearlyPlanData });
     setIsRegisterd(true);
-    // TODO return to previous page(history?....)
+    history.push(`/clients/${data.RR}`);
   };
   useEffect(() => {
     if (formData) {
@@ -33,6 +38,9 @@ const Register = ({ data, setIsRegisterd }) => {
           lastName: data.xR,
           email: data.At,
           yearlyGoal: "",
+          averageApartmentPrice: "",
+          CommissionPercentage: "",
+          myCommissionPercentage: "",
         }}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
@@ -70,6 +78,40 @@ const Register = ({ data, setIsRegisterd }) => {
               type="number"
               name="yearlyGoal"
               placeholder="Dream Big"
+              required
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="averageApartmentPrice">
+              Average Apartment Price
+            </label>
+            <Field
+              id="averageApartmentPrice"
+              type="number"
+              name="averageApartmentPrice"
+              placeholder="what is the avarage price?"
+              required
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="CommissionPercentage">Commission Percentage</label>
+            <Field
+              id="CommissionPercentage"
+              type="number"
+              name="CommissionPercentage"
+              placeholder="%"
+              required
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="myCommissionPercentage">
+              Your Commission Percentage
+            </label>
+            <Field
+              id="myCommissionPercentage"
+              type="number"
+              name="myCommissionPercentage"
+              placeholder="1-100"
               required
             />
           </div>

@@ -13,6 +13,7 @@ const Clients = ({ clientData, setIsRegisterd }) => {
     };
     getClients();
   }, []);
+  // TODO fix logic,only works if there is at least one client registerd
   useEffect(() => {
     if (clientsList.length) {
       const status = [...clientsList].find((el) => {

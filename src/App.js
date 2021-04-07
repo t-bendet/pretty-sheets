@@ -12,6 +12,7 @@ import LandingPage from "./components/LandingPage";
 import Clients from "./components/Clients";
 import Register from "./components/Register";
 import ClientCard from "./components/ClientCard";
+import Prograss from "./components/Prograss";
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(null);
@@ -111,17 +112,24 @@ const App = () => {
             )}
           />
           <Route
+            exact
             path="/register"
             component={() => (
               <Register data={clientData} setIsRegisterd={setIsRegisterd} />
             )}
           />
           <Route
+            exact
             path="/clients/:id"
             component={() => (
               <ClientCard data={clientData} isRegisterd={isRegisterd} />
             )}
           />
+          <Route
+            exact
+            path="/clients/:id/prograss"
+            component={() => <Prograss />}
+          ></Route>
         </Switch>
       </div>
     </BrowserRouter>

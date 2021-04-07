@@ -31,10 +31,9 @@
 
 ### Register Form
 
-- [ ] basic form info(name,email,company for now)
-- [ ] basic goals and data (money per month for now)
-- [ ] Q: login to google (OAuth 2.0 client id/sheet id/create specific sheet per user on my account?..../....)
-- [ ] save form data to google sheets
+- [x] basic form info(name,email,company for now)
+- [x] basic goals and data (money per month for now)
+- [ ] save form data to mockApi
 - [ ] once submitted redirect to progress bar
 
 ### Prograss Page
