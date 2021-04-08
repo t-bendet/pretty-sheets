@@ -1,24 +1,14 @@
-.landing {
+.clients {
   height: Calc(100vh - 64px);
-  background-image: url("../images/hero.jpg");
+  background-image: url("../images/clients.jpg");
   height: 500px; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
-  opacity: 0.75;
-}
-
-.landing__content {
-  padding: 2rem;
+  opacity: 0.95;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
-  color: azure;
-}
-
-h1 {
-  font-size: 3rem;
 }

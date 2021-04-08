@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Navbar = ({ renderAuthButton, userStatus, clientStatus }) => {
+  const history = useHistory();
+  let progLink = history.location.pathname;
+  console.log(history);
   const renderNav = () => {
     if (userStatus && clientStatus) {
       //TODO change to active links with conditional rendering by client....
       return (
         <React.Fragment>
           <div className="item">
-            <div>prograss</div>
+            <Link to={`${progLink}/prograss`}>prograss</Link>
           </div>
           <div className="item">
             <div>track your meetings</div>

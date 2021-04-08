@@ -2,15 +2,15 @@
 
 - [x] login with OAuth 2.0
 - [x] Mock api as data storage
-- [ ] Crud App
+- [x] Crud App
 - [ ] clients Tracking
-- [ ] Goal setting and tracking
+- [x] Goal setting and tracking
 
 ## main challenges
 
-- [ ] registring a client and enable login
+- [x] registring a client and enable login
 - [ ] using mail chimp per user
-- [ ] Time shortage(use only semantic ui for design,minimal css)
+- [x] Time shortage(use only semantic ui for design,minimal css)
 
 ## components
 
@@ -26,21 +26,21 @@
 ### Landing page
 
 - [x] Hero Image
-- [ ] Short explantion (ipso lorem for now)
+- [x] Short explantion (ipso lorem for now)
 - [x] Register button(link to register)
 
 ### Register Form
 
 - [x] basic form info(name,email,company for now)
 - [x] basic goals and data (money per month for now)
-- [ ] save form data to mockApi
-- [ ] once submitted redirect to progress bar
+- [x] save form data to mockApi
+- [x] once submitted redirect to progress bar
 
 ### Prograss Page
 
-- [ ] display year plan for actions
+- [x] display year plan for actions
 - [ ] editable goals
-- [ ] plan vs execution
+- [x] plan vs execution
 
 ### Tracking past meetings
 
@@ -50,10 +50,6 @@
 ### Daily Report
 
 - [ ] form with fixed params(num of calls,num of meetings and so)
-
-## design ideas
-
-- [ ] accordion display with semantic ui
 
 ## Extra
 

@@ -12,11 +12,11 @@ const Register = ({ data, setIsRegisterd }) => {
       ...formData,
       googleId: data.RR,
       registerDate: new Date(),
-      dailyReport: [],
+      dailyReport: [], // TODO add updating
     };
+    setIsRegisterd(true);
     const yearlyPlanData = YearlyPlan(registrationData);
     await MockApi.post("/clients", { ...registrationData, ...yearlyPlanData });
-    setIsRegisterd(true);
     history.push(`/clients/${data.RR}`);
   };
   useEffect(() => {

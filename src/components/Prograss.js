@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import MockApi from "../apis/MockApi";
 import PrograssTable from "./PrograssTable";
-const Prograss = () => {
+const Prograss = ({ setIsRegisterd }) => {
   const { id } = useParams();
   const [clientdata, setClientdata] = useState(undefined);
+  setIsRegisterd(true);
   useEffect(() => {
     const getClient = async () => {
       const { data } = await MockApi.get("/clients");
@@ -15,12 +16,7 @@ const Prograss = () => {
     };
     getClient();
   }, []);
-  return (
-    <div>
-      <h1>Prograss</h1>
-      {clientdata && <PrograssTable tableData={clientdata} />}
-    </div>
-  );
+  return <div>{clientdata && <PrograssTable tableData={clientdata} />}</div>;
 };
 
 export default Prograss;

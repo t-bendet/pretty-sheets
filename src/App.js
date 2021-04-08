@@ -39,12 +39,8 @@ const App = () => {
       auth.isSignedIn.listen(onAuthChange);
     }
   }, [auth]);
-  useEffect(() => {}, [clientData]);
   const onAuthChange = () => {
     setIsSignedIn(auth.isSignedIn.get());
-    if (clientData) {
-      console.log(clientData);
-    }
   };
 
   // sign in and out
@@ -98,7 +94,6 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
-            //TODO fix need to refresh after sign in
             {clientData ? <Redirect to={`/clients`} /> : <LandingPage />}
           </Route>
           <Route
@@ -108,6 +103,7 @@ const App = () => {
               <Clients
                 clientData={clientData}
                 setIsRegisterd={setIsRegisterd}
+                setIsSignedIn={setIsSignedIn}
               />
             )}
           />
@@ -128,7 +124,7 @@ const App = () => {
           <Route
             exact
             path="/clients/:id/prograss"
-            component={() => <Prograss />}
+            component={() => <Prograss setIsRegisterd={setIsRegisterd} />}
           ></Route>
         </Switch>
       </div>

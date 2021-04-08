@@ -5,14 +5,9 @@ const LandingPage = () => {
   return (
     <div className="ui container landing">
       <div className="landing__content">
-        <h1>Welcome</h1>
-        <h2>something something</h2>
-        <h4>text</h4>
-        <h4>text</h4>
-        <h4>text</h4>
-        <h4>text</h4>
-        <h4>more text</h4>
-        <h4>click on the red btn dummy</h4>
+        <h1>Preety Sheets</h1>
+        <h2>Small App </h2>
+        <h3>Big Results </h3>
       </div>
     </div>
   );

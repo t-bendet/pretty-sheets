@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import MockApi from "../apis/MockApi";
-
 const Clients = ({ clientData, setIsRegisterd }) => {
   const [clientsList, setClientsList] = useState([]);
   const [redirect, setRedirect] = useState(null);
